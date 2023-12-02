@@ -1,9 +1,9 @@
-def read_file(path):
+def read_file(path: str) -> list[str]:
     with open(path, "r") as f:
         return [line.strip() for line in f.readlines()]
 
 
-def solution_1(lines):
+def solution_1(lines: list[str]) -> int:
     sum = 0
     for line in lines:
         digits = [char for char in line if char.isdigit()]
@@ -12,7 +12,9 @@ def solution_1(lines):
     return sum
 
 
-def solution_2(lines, lookup_table, verbose=False):
+def solution_2(
+    lines: list[str], lookup_table: dict[str, str], verbose: bool = False
+) -> int:
     sum = 0
     for line in lines:
         first_pos = len(line)
@@ -53,7 +55,7 @@ if __name__ == "__main__":
     path = "inputs/day1_input.txt"
     lines = read_file(path)
 
-    lookup_table = {
+    lookup_table: dict[str, str] = {
         "one": "1",
         "two": "2",
         "three": "3",

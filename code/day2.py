@@ -1,7 +1,7 @@
 import math
 
 
-def read_file(path):
+def read_file(path: str) -> list[dict[str, str]]:
     all_games = []
     with open(path, "r") as file:
         for line in file:
@@ -15,7 +15,7 @@ def read_file(path):
     return all_games
 
 
-def solution_1(games):
+def solution_1(games: list[dict[str, str]]):
     total_sum = 0
     for game in games:
         id_ = int(game["id"].split(" ")[1])
@@ -30,7 +30,7 @@ def solution_1(games):
     return total_sum
 
 
-def solution_2(games):
+def solution_2(games: list[dict[str, str]]) -> int:
     total_power = 0
     for game in games:
         min_dict = {"red": 0, "green": 0, "blue": 0}
@@ -57,6 +57,7 @@ def check_color_count(color, count_):
 if __name__ == "__main__":
     path = "inputs/day2_input.txt"
     games = read_file(path)
+    print(games)
     sum = solution_1(games)
     print(sum)
     power = solution_2(games)
