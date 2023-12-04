@@ -19,6 +19,17 @@ def solution_1(games: list[dict[str, str]]):
     total_sum = 0
     for game in games:
         id_ = int(game["id"].split(" ")[1])
+        # Check if all color counts evaluate to True when
+        # checking their count with check_color_count.
+        # The function is called for each color and its count in the game
+        # The color and count are extracted from the value of each key-value
+        # pair in the game dictionary
+        # The key-value pairs are split into color and count.
+        # The color and count are then stripped of leading and
+        # trailing whitespace and split on " "
+        # The count is converted to an integer
+        # If no color is greater than its maximum allowed count,
+        # then the sum is increased by the id of the game
         if all(
             check_color_count(color, int(number))
             for key, value in game.items()
