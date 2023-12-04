@@ -44,18 +44,22 @@ def solution_1(games: list[dict[str, str]]):
 def solution_2(games: list[dict[str, str]]) -> int:
     total_power = 0
     for game in games:
+        # Create a dictionary with the minimum values needed for each color
         min_dict = {"red": 0, "green": 0, "blue": 0}
         for value in list(game.values())[1:]:
             values = value.split(",")
             for one_game in values:
                 number, color = one_game.strip().split(" ")
+                # set the minimum needed for the max of either the current value
+                # or the cube color count
                 min_dict[color] = max(min_dict[color], int(number))
 
         total_power += math.prod(dict.values(min_dict))
     return total_power
 
 
-def check_color_count(color, count_):
+def check_color_count(color, count_) -> bool:
+    """Check if the color count is more than the maximum allowed count."""
     if color == "red" and count_ > 12:
         return False
     if color == "green" and count_ > 13:

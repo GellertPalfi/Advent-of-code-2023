@@ -1,9 +1,26 @@
+from common import read_file
+
 SYMBOLS = ["$", "*", "/", "+", "&", "@", "#", "%", "=", "-"]
 
+"""
+Basic algorithm steps:
+----------------------
+1. Iterate over the matrix except the first and last row and column.
+2. If the current symbol is in the list of symbols, get the 3x3 neighbourhood
+    around the current symbol.
+3. Iterate over the neighbourhood and get all numbers.
+4. If we found a number use 2 pointers to get the begining and end of the number.
+5. Concatenate the left, middle and right parts and return the number.
+6. Sum all the numbers in the neighbourhood and return the sum.
 
-def read_data(path: str) -> list[str]:
-    with open(path, "r") as f:
-        return [line.strip() for line in f.readlines()]
+Notes:
+This algorithm will count a number multiple times if multiple digits of the number are
+in the 3x3 neighbourhood of the symbol. To compensate for this we use a set.
+This introduces a new problem. If we have 2 of the same number in 1 row,
+ in the neighbourhood
+of 2 different symbols, we would count the number only once.
+
+"""
 
 
 def get_neighbour_number(matrix: list[str], row: int, col: int, i: int, j: int) -> int:
@@ -124,5 +141,5 @@ def solution_2(matrix):
 
 if __name__ == "__main__":
     path = "inputs/day3_input.txt"
-    matrix = read_data(path)
+    matrix = read_file(path)
     print(solution_2(matrix))
