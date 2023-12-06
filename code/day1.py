@@ -63,7 +63,7 @@ def solution_2(
 
 
 if __name__ == "__main__":
-    path = "inputs/day1_input.txt"
+    path = "inputs/day1.txt"
     lines = read_file(path)
 
     lookup_table: dict[str, str] = {

@@ -126,7 +126,7 @@ def solution_1(matrix: list[str]) -> int:
     return total_sum
 
 
-def solution_2(matrix):
+def solution_2(matrix: list[str]) -> int:
     total_sum = 0
     n = len(matrix)
     m = len(matrix[0])
@@ -140,6 +140,7 @@ def solution_2(matrix):
 
 
 if __name__ == "__main__":
-    path = "inputs/day3_input.txt"
+    path = "inputs/day3.txt"
     matrix = read_file(path)
+    print(solution_1(matrix))
     print(solution_2(matrix))

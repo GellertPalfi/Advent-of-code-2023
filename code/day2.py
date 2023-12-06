@@ -70,7 +70,7 @@ def check_color_count(color, count_) -> bool:
 
 
 if __name__ == "__main__":
-    path = "inputs/day2_input.txt"
+    path = "inputs/day2.txt"
     games = read_file(path)
     print(games)
     sum = solution_1(games)

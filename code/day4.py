@@ -75,7 +75,7 @@ def solution_2(tickets: list[dict[str, str]]) -> int:
 
 
 if __name__ == "__main__":
-    path = "inputs/day4_input.txt"
+    path = "inputs/day4.txt"
     lines = read_file(path)
     tickets = split_input(lines)
     print(solution_2(tickets))

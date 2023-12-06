@@ -1,13 +1,13 @@
 import numpy as np
 
 
-def read_data(path):
+def read_data(path: str) -> tuple[list[int], dict]:
     with open(path, "r") as file:
         seeds = [
             int(num) for num in file.readline().strip().split(":")[1].strip().split(" ")
         ]
 
-    def line_to_int_list(line):
+    def line_to_int_list(line: str) -> list[int]:
         return [int(x) for x in line.split()]
 
     # Dictionary to hold the data
@@ -28,21 +28,21 @@ def read_data(path):
     return seeds, maps
 
 
-def split_into_pairs(lst):
+def split_into_pairs(lst: list[int]) -> list[list[int]] :
     return [lst[i : i + 2] for i in range(0, len(lst), 2)]
 
 
-def convert_pairs_to_ranges(lst):
+def convert_pairs_to_ranges(lst: list[int]) -> list[int]:
     return [lst[0], lst[1] + lst[0]]
 
 
-def create_ranges_from_mapping(mapping):
+def create_ranges_from_mapping(mapping) -> tuple[range, range]:
     return range(mapping[1], mapping[1] + mapping[2]), range(
         mapping[0], mapping[0] + mapping[2]
     )
 
 
-def solution_1():
+def solution_1() -> float:
     min_location = np.inf
     for seed in seeds:
         for _, values in data_dict.items():
@@ -78,7 +78,7 @@ def solution_2(ranges):
 
 
 if __name__ == "__main__":
-    seeds, data_dict = read_data("inputs/day5_input.txt")
+    seeds, data_dict = read_data("inputs/day5.txt")
     print(solution_1())
     seeds_range = []
     pairs = split_into_pairs(seeds)
