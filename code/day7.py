@@ -113,7 +113,7 @@ def solution(hand_types: dict[str, list], len_hands: int) -> int:
 
 
 if __name__ == "__main__":
-    part_2 = False
+    part_2 = True
     input = read_file("inputs/day7.txt")
     hands, values = process_input(input)
     len_hands = len(hands)

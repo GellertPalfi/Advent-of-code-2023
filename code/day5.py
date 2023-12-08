@@ -28,7 +28,7 @@ def read_data(path: str) -> tuple[list[int], dict]:
     return seeds, maps
 
 
-def split_into_pairs(lst: list[int]) -> list[list[int]] :
+def split_into_pairs(lst: list[int]) -> list[list[int]]:
     return [lst[i : i + 2] for i in range(0, len(lst), 2)]
 
 
