@@ -1,4 +1,4 @@
-from common import read_file
+from common import read_input
 import math
 
 
@@ -44,7 +44,7 @@ def solution_2(time: int, distance: int) -> int:
 
 
 if __name__ == "__main__":
-    input = read_file("inputs/day6.txt")
+    input = read_input("inputs/day6.txt")
     times, distances = process_input(input)
     print(solution_1(times, distances))
     time, distance = transfer_input(times, distances)

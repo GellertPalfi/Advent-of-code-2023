@@ -1,4 +1,4 @@
-from common import read_file
+from common import read_input
 
 SYMBOLS = ["$", "*", "/", "+", "&", "@", "#", "%", "=", "-"]
 
@@ -141,6 +141,6 @@ def solution_2(matrix: list[str]) -> int:
 
 if __name__ == "__main__":
     path = "inputs/day3.txt"
-    matrix = read_file(path)
+    matrix = read_input(path)
     print(solution_1(matrix))
     print(solution_2(matrix))

@@ -1,4 +1,4 @@
-from common import read_file
+from common import read_input
 
 """list(set(list1).intersection(list2))"""
 
@@ -76,6 +76,6 @@ def solution_2(tickets: list[dict[str, str]]) -> int:
 
 if __name__ == "__main__":
     path = "inputs/day4.txt"
-    lines = read_file(path)
+    lines = read_input(path)
     tickets = split_input(lines)
     print(solution_2(tickets))

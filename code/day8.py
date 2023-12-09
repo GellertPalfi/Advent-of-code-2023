@@ -1,4 +1,5 @@
 import math
+import time
 
 
 def read_input(path: str) -> tuple[str, dict[str, list[str]]]:
@@ -46,6 +47,7 @@ def solution_2(instuctions: str, nodes: dict[str, list[str]]) -> int:
     step_count = 0
     index = 0
     while not all(all_found):
+        start = time.time()
         if index == len(instuctions):
             index = 0
         instuction = instuctions[index]
@@ -62,10 +64,14 @@ def solution_2(instuctions: str, nodes: dict[str, list[str]]) -> int:
                 all_found[i] = True
                 first_z_encounter[i] = step_count
 
+        if step_count == 10000:
+            end = time.time() - start
+            return end
+
     return math.lcm(*first_z_encounter)
 
 
 if __name__ == "__main__":
     instuctions, nodes = read_input("inputs/day8.txt")
-    print(solution(instuctions, nodes))
+    # print(solution(instuctions, nodes))
     print(solution_2(instuctions, nodes))

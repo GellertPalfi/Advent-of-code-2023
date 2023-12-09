@@ -1,4 +1,4 @@
-from common import read_file
+from common import read_input
 
 
 def solution_1(lines: list[str]) -> int:
@@ -64,7 +64,7 @@ def solution_2(
 
 if __name__ == "__main__":
     path = "inputs/day1.txt"
-    lines = read_file(path)
+    lines = read_input(path)
 
     lookup_table: dict[str, str] = {
         "one": "1",

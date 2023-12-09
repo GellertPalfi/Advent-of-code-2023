@@ -1,4 +1,4 @@
-from common import read_file
+from common import read_input
 from collections import Counter
 from typing import Literal
 
@@ -114,7 +114,7 @@ def solution(hand_types: dict[str, list], len_hands: int) -> int:
 
 if __name__ == "__main__":
     part_2 = True
-    input = read_file("inputs/day7.txt")
+    input = read_input("inputs/day7.txt")
     hands, values = process_input(input)
     len_hands = len(hands)
     hand_types = get_hand_types(hands, values)
