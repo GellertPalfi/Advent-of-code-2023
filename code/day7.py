@@ -1,6 +1,7 @@
-from common import read_input
 from collections import Counter
 from typing import Literal
+
+from common import read_input
 
 
 def process_input(input: list[str]) -> tuple[list, list]:

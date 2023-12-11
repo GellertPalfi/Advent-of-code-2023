@@ -1,5 +1,6 @@
-from common import read_input
 import math
+
+from common import read_input
 
 
 def process_input(input: list[str]) -> tuple[list[int], list[int]]:
@@ -25,7 +26,7 @@ def solution_1(times: list[int], distances: list[int]) -> int:
     for time, distance in zip(times, distances):
         times_won = 0
         for i in range(0, time):
-            if distance < (result := dist_traveled(i, time)):
+            if distance < (result := dist_traveled(i, time)):  # noqa
                 times_won += 1
         possible_ways.append(times_won)
 
@@ -36,7 +37,7 @@ def solution_2(time: int, distance: int) -> int:
     possible_ways = []
     times_won = 0
     for i in range(0, time):
-        if distance < (result := dist_traveled(i, time)):
+        if distance < (result := dist_traveled(i, time)):  # noqa
             times_won += 1
     possible_ways.append(times_won)
 
