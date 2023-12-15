@@ -1,6 +1,3 @@
-from common import read_input
-
-
 def split_input(path: str) -> list[str]:
     with open(path, "r") as f:
         values = f.read().split(",")

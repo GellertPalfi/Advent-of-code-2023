@@ -1,5 +1,4 @@
 import numpy as np
-from tqdm import tqdm
 
 
 def read_input(path: str) -> list[str]:
