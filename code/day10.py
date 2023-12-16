@@ -1,3 +1,4 @@
+from common import read_input
 """
 | is a vertical pipe connecting north and south.
 - is a horizontal pipe connecting east and west.
@@ -22,10 +23,6 @@ NEXT_DIRECTIONS = {
     "F": {"south": "east", "east": "south"},
 }
 
-
-def read_input(path: str) -> list[str]:
-    with open(path, "r") as f:
-        return [line.strip() for line in f.readlines()]
 
 
 def process_input(input: list[str]):
