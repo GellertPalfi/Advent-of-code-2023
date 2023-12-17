@@ -12,23 +12,36 @@ OPPOSITE_DIRECTIONS = {
     "west": "east",
 }
 NEXT_DIRECTIONS = {
-    "|": {"north": "south", "south": "north", "west": ["south", "north"], "east": ["south", "north"]},
-    "-": {"east": "west", "west": "east", "north": ["west", "east"], "south": ["west", "east"]},
-    "\\": {"north": "east", "east": "north","south": "west", "west": "south"},
+    "|": {
+        "north": "south",
+        "south": "north",
+        "west": ["south", "north"],
+        "east": ["south", "north"],
+    },
+    "-": {
+        "east": "west",
+        "west": "east",
+        "north": ["west", "east"],
+        "south": ["west", "east"],
+    },
+    "\\": {"north": "east", "east": "north", "south": "west", "west": "south"},
     "/": {"north": "west", "west": "north", "south": "east", "east": "south"},
-    ".": {"north": "south", "east": "west", "west":"east", "south":"north"}
+    ".": {"north": "south", "east": "west", "west": "east", "south": "north"},
 }
 
 
 def process_input(input: list[str]):
     return [list(line) for line in input]
 
+
 def in_bounds(grid, row, col):
     grid_width = len(grid[0])
     grid_height = len(grid)
-    return 0 <= row < grid_height and  0<=col < grid_width
+    return 0 <= row < grid_height and 0 <= col < grid_width
+
 
 Beam = namedtuple("Beam", ["current_pos", "dir"])
+
 
 def energize(input, starting_pos, direction):
     energized_points = deepcopy(input)
@@ -56,13 +69,11 @@ def energize(input, starting_pos, direction):
             if not in_bounds(input, next_row, next_col):
                 continue
 
-            
             next_char = input[next_row][next_col]
             dir_we_came_from = OPPOSITE_DIRECTIONS[beam.dir]
-            
+
             # next_dir can be a list if the first charachter splits the beam
             next_dirs = NEXT_DIRECTIONS[next_char][dir_we_came_from]
-
 
             if isinstance(next_dirs, list):
                 for dir in next_dirs:
@@ -89,6 +100,7 @@ def solution_1(input: list[list[str]], starting_pos, direction) -> int:
     energized_input = energize(input, starting_pos, direction)
     return sum([line.count("#") for line in energized_input])
 
+
 def solution_2(input_grid):
     def get_starting_positions(direction):
         if direction == "west":
@@ -103,16 +115,17 @@ def solution_2(input_grid):
     energised_cell_counts = []
     for direction in DIR:
         for starting_pos in get_starting_positions(direction):
-            energised_cell_counts.append(solution_1(input_grid, starting_pos, direction))
+            energised_cell_counts.append(
+                solution_1(input_grid, starting_pos, direction)
+            )
 
     return max(energised_cell_counts)
-      
 
 
 if __name__ == "__main__":
     input = read_input("inputs/day16.txt")
     processed_input = process_input(input)
-    starting_pos = (0,0)
+    starting_pos = (0, 0)
     direction = "west"
     print(solution_1(processed_input, starting_pos, direction))
     print(solution_2(processed_input))

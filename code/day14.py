@@ -1,4 +1,3 @@
-
 from common import read_input
 
 
