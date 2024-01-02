@@ -1,4 +1,8 @@
-def read_input(path: str):
+def read_input(
+    path: str,
+) -> tuple[
+    dict[str, tuple[list[tuple[str, str, int, str]], str]], list[dict[str, int]]
+]:
     parts = []
     workflows = {}
     with open(path, "r") as f:
@@ -29,7 +33,11 @@ def read_input(path: str):
     return workflows, parts
 
 
-def accepted(part, workflows, workflow="in"):
+def accepted(
+    part: list[dict[str, int]],
+    workflows: dict[str, tuple[list[tuple[str, str, int, str]], str]],
+    workflow: str = "in",
+) -> bool:
     if workflow == "A":
         return 1
     if workflow == "R":
@@ -48,7 +56,10 @@ def accepted(part, workflows, workflow="in"):
         return accepted(part, workflows, fallback_rule)
 
 
-def solution_1(workflows, parts):
+def solution_1(
+    workflows: dict[str, tuple[list[tuple[str, str, int, str]], str]],
+    parts: list[dict[str, int]],
+) -> int:
     total_sum = 0
     for part in parts:
         if accepted(part, workflows):
@@ -56,7 +67,11 @@ def solution_1(workflows, parts):
     return total_sum
 
 
-def count_range(ranges, workflows, workflow="in"):
+def count_range(
+    ranges: dict[str, tuple[int, int]],
+    workflows: dict[str, tuple[list[tuple[str, str, int, str]], str]],
+    workflow: str = "in",
+) -> int:
     if workflow == "R":
         return 0
     if workflow == "A":
@@ -91,11 +106,13 @@ def count_range(ranges, workflows, workflow="in"):
     return total_sum
 
 
-def solution_2(workflows):
+def solution_2(
+    workflows: dict[str, tuple[list[tuple[str, str, int, str]], str]],
+) -> int:
     return count_range({key: (1, 4000) for key in "xmas"}, workflows)
 
 
 if __name__ == "__main__":
     workflows, parts = read_input("inputs/day19_sample.txt")
-    # print(solution_1(workflows, parts))
+    print(solution_1(workflows, parts))
     print(solution_2(workflows))

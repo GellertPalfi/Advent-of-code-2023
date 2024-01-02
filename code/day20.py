@@ -1,6 +1,7 @@
-from common import read_input
-from collections import deque
 import math
+from collections import deque
+
+from common import read_input
 
 
 class Module:
@@ -15,7 +16,7 @@ class Module:
             self.memory = {}
 
 
-def preprocess_data(input) -> tuple[dict[str, Module], list[str]]:
+def preprocess_data(input: list[str]) -> tuple[dict[str, Module], list[str]]:
     modules = {}
     broadcast_dest = []
 
@@ -37,7 +38,7 @@ def preprocess_data(input) -> tuple[dict[str, Module], list[str]]:
     return modules, broadcast_dest
 
 
-def solution1(modules: dict[str, Module], broadcast_dest):
+def solution1(modules: dict[str, Module], broadcast_dest) -> int:
     low = high = 0
 
     for _ in range(1000):
@@ -71,7 +72,7 @@ def solution1(modules: dict[str, Module], broadcast_dest):
     return low * high
 
 
-def solution2(modules: dict[str, Module], broadcast_dest):
+def solution2(modules: dict[str, Module], broadcast_dest: list[str]) -> int:
     [feed] = [name for name, module in modules.items() if "rx" in module.destinations]
     cycle_lengths = {}
     seen = {
@@ -93,7 +94,6 @@ def solution2(modules: dict[str, Module], broadcast_dest):
                 if origin not in cycle_lengths:
                     cycle_lengths[origin] = presses
                 if all(seen.values()):
-                    print(cycle_lengths)
                     return math.lcm(*cycle_lengths.values())
 
             if modules[dest].type == "%" and signal == "low":

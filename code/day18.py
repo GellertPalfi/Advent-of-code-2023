@@ -4,7 +4,7 @@ DIR = {"U": (-1, 0), "D": (1, 0), "R": (0, 1), "L": (0, -1)}
 COLOR_MAP = {0: "R", 1: "D", 2: "L", 3: "U"}
 
 
-def preprocess_input(input: list[str]) -> list[list[str]]:
+def preprocess_input(input: list[str]) -> tuple[list[str, int], list[str]]:
     directions = []
     colors = []
     for line in input:
@@ -44,7 +44,7 @@ def solution_1(directions: list[tuple[str, int]]) -> int:
     return picks_theorem(area, boundary_len) + boundary_len
 
 
-def solution_2(colors):
+def solution_2(colors: list[str]):
     directions = []
 
     for row in colors:
@@ -58,6 +58,6 @@ def solution_2(colors):
 if __name__ == "__main__":
     input = read_input("inputs/day18.txt")
     directions, colors = preprocess_input(input)
-
+    print(directions, colors)
     print(solution_1(directions))
     print(solution_2(colors))
