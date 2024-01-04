@@ -30,7 +30,7 @@ def solution_1(hailstones: list[tuple[int]]) -> int:
 def solution_2(hailstones: list[tuple[int]]) -> int:
     xr, yr, zr, vxr, vyr, vzr = sympy.symbols("xr yr zr vxr vyr vzr")
     equations = []
-    for i, (sx, sy, sz, vx, vy, vz) in enumeratecpo(hailstones):
+    for i, (sx, sy, sz, vx, vy, vz) in enumerate(hailstones):
         equations.append((xr - sx) * (vy - vyr) - (yr - sy) * (vx - vxr))
         equations.append((yr - sy) * (vz - vzr) - (zr - sz) * (vy - vyr))
         # x % 1 == 0 checks if x is an integer
